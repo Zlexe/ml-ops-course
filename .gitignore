@@ -24,3 +24,6 @@ cp /mnt/user-data/uploads/bank-full.csv data/raw/ 2>/dev/null || echo "Скоп�
 
 git add .
 git status
+# DVC-метаданные нужны в Git
+!data/raw/*.dvc
+!data/raw/.gitignore
