@@ -35,3 +35,12 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.17.6",
 ]
+
+[tool.coverage.run]
+source = ["src/ml_ops_course"]
+omit = [
+    "src/ml_ops_course/train.py",
+    "src/ml_ops_course/final.py",
+    "src/ml_ops_course/ui.py",
+    "src/ml_ops_course/data.py",
+]

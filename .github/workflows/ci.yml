@@ -16,7 +16,7 @@ jobs:
       - name: Lint
         run: uv run ruff check src tests
       - name: Tests with coverage threshold
-        run: uv run pytest --cov=src/ml_ops_course --cov-fail-under=70 -q
+        run: uv run pytest --cov=src/ml_ops_course --cov-fail-under=80 -q
 
   docker:
     needs: test
