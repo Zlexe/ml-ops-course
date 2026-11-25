@@ -13,7 +13,7 @@ NUMERIC_V2 = ["age", "balance", "day", "campaign", "previous", "previously_conta
 
 def drop_leakage(X: pd.DataFrame) -> pd.DataFrame:
     # duration известна только после звонка, в модели её использовать нельзя
-    return X.drop(columns=["duration"])
+    return X.drop(columns=["duration"], errors="ignore")
 
 
 def add_previously_contacted(X: pd.DataFrame) -> pd.DataFrame:
