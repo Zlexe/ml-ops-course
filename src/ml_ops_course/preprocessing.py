@@ -22,6 +22,10 @@ def add_previously_contacted(X: pd.DataFrame) -> pd.DataFrame:
     return X.drop(columns=["pdays"])
 
 
+def v2_features(X: pd.DataFrame) -> pd.DataFrame:
+    return add_previously_contacted(drop_leakage(X))
+
+
 def _build(numeric: list[str], feature_fn) -> Pipeline:
     column_tf = ColumnTransformer(
         transformers=[
@@ -41,7 +45,5 @@ def make_preprocessor(version: str) -> Pipeline:
     if version == "v1":
         return _build(NUMERIC_V1, drop_leakage)
     if version == "v2":
-        def v2_features(X):
-            return add_previously_contacted(drop_leakage(X))
         return _build(NUMERIC_V2, v2_features)
     raise ValueError(f"Неизвестная версия препроцессинга: {version}")
