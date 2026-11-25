@@ -1,8 +1,6 @@
-cat > .gitignore << 'EOF'
 .venv/
 __pycache__/
 *.pyc
-data/
 mlruns/
 models/
 .env
@@ -12,18 +10,6 @@ models/
 .coverage
 htmlcov/
 .DS_Store
-EOF
-
-cat > .env.example << 'EOF'
-MODEL_PATH=models/model.joblib
-MODEL_VERSION=v1.0.0
-EOF
-
-mkdir -p data/raw src/app configs tests models
-cp /mnt/user-data/uploads/bank-full.csv data/raw/ 2>/dev/null || echo "Скопируйте bank-full.csv в data/raw/ вручную"
-
-git add .
-git status
-# DVC-метаданные нужны в Git
+data/raw/*
 !data/raw/*.dvc
 !data/raw/.gitignore
