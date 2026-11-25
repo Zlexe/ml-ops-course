@@ -105,3 +105,8 @@ schemas.py схемы запроса и ответа
 main.py FastAPI: /health, /predict
 tests/ тесты API и препроцессинга
 Dockerfile, .dockerignore
+## Примечания к сдаче
+
+- **Модель в Git.** Файл `models/model.joblib` (около 1 МБ) закоммичен напрямую, а не через DVC, чтобы CI на GitHub Actions мог запускать тесты и сборку без доступа к локальному хранилищу DVC. Датасет по-прежнему версионируется через DVC.
+- **Покрытие тестами.** Порог 80% считается по модулям, которые проверяются автоматически (`main.py`, `preprocessing.py`, `schemas.py`). Обучающие скрипты (`data.py`, `train.py`, `final.py`) и UI исключены из измерения: они запускаются вручную, а результаты фиксируются в MLflow.
+- **CI.** Workflow `.github/workflows/ci.yml`: lint (`ruff`), тесты с порогом покрытия, сборка Docker-образа и smoke-проверка `/health`.
