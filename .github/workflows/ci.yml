@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - name: Lint
+        run: uv run ruff check src tests
+      - name: Tests with coverage threshold
+        run: uv run pytest --cov=src/ml_ops_course --cov-fail-under=70 -q
+
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t ml-ops-course:${{ github.sha }} .
+      - name: Smoke test
+        run: |
+          docker run -d --name smoke -p 8000:8000 ml-ops-course:${{ github.sha }}
+          sleep 10
+          curl -sf localhost:8000/health
+          docker rm -f smoke
