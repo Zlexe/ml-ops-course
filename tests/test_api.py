@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 os.environ.setdefault("MODEL_PATH", "models/model.joblib")
 os.environ.setdefault("MODEL_VERSION", "v1.0.0")
 
-from ml_ops_course.main import app  # noqa: E402
+from ml_ops_course.main import app
 
 VALID = {
     "age": 41, "job": "technician", "marital": "married", "education": "secondary",

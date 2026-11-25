@@ -1,6 +1,10 @@
 import pandas as pd
 
-from ml_ops_course.preprocessing import add_previously_contacted, drop_leakage, make_preprocessor
+from ml_ops_course.preprocessing import (
+    add_previously_contacted,
+    drop_leakage,
+    make_preprocessor,
+)
 
 
 def _sample() -> pd.DataFrame:
