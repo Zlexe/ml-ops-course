@@ -13,3 +13,5 @@ htmlcov/
 data/raw/*
 !data/raw/*.dvc
 !data/raw/.gitignore
+mlflow.db
+mlartifacts/
