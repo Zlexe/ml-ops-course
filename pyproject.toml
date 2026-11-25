@@ -1,0 +1,36 @@
+[project]
+name = "ml-ops-course"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Vadim Lozovoy", email = "vadimlozovoj005@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dvc>=3.67.1",
+    "fastapi>=0.165.0",
+    "joblib>=1.6.0",
+    "lightgbm>=4.7.0",
+    "mlflow>=3.18.0",
+    "pandas>=3.1.1",
+    "pydantic-settings>=2.16.3",
+    "pyyaml>=6.0.4",
+    "scikit-learn>=1.9.1",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+ml-ops-course = "ml_ops_course:main"
+
+[build-system]
+requires = ["uv_build>=0.13.10,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.6",
+]
