@@ -1,0 +1,17 @@
+.venv
+.git
+.gitignore
+data
+mlruns
+mlartifacts
+mlflow.db
+tests
+.env
+.dvc
+.pytest_cache
+.ruff_cache
+.coverage
+htmlcov
+__pycache__
+*.pyc
+*.ipynb
